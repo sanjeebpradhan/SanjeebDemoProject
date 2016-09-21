@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.example.org/HelloWorldWSDL/"
+    elementFormDefault="qualified">
+
+    <element name="getNameRequest">
+        <complexType>
+            <sequence>
+                <element name="Name" type="Name"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="getNameResponse">
+        <complexType>
+            <sequence>
+                <element name="refNumber" type="string"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    
+  
+  <complexType name="Name">
+      <sequence>
+          <element name="fName" type="string"></element>
+          <element name="mName" type="string"></element>
+          <element name="lName" type="string"></element>
+      </sequence>
+  </complexType>
+
+ 
+
+   
+</schema>

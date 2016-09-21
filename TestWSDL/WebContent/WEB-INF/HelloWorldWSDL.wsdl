@@ -1,0 +1,50 @@
+<definitions name="GreetingService" targetNamespace="http://endpoints.jaxwsspring.javacodegeeks.com/">
+ <types>
+  <xs:schema targetNamespace="http://endpoints.jaxwsspring.javacodegeeks.com/" version="1.0">
+   <xs:element name="sayHello" type="tns:sayHello"/>
+   <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+   <xs:complexType name="sayHello">
+    <xs:sequence/>
+   </xs:complexType>
+   <xs:complexType name="sayHelloResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+
+ <message name="GreetingServiceEndpoint_sayHello">
+  <part element="tns:sayHello" name="sayHello"/>
+ </message>
+
+ <message name="GreetingServiceEndpoint_sayHelloResponse">
+  <part element="tns:sayHelloResponse" name="sayHelloResponse"/>
+ </message>
+
+ <portType name="GreetingServiceEndpoint">
+  <operation name="sayHello" parameterOrder="sayHello">
+   <input message="tns:GreetingServiceEndpoint_sayHello"/>
+   <output message="tns:GreetingServiceEndpoint_sayHelloResponse"/>
+  </operation>
+ </portType>
+
+ <binding name="GreetingServiceEndpointBinding" type="tns:GreetingServiceEndpoint">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="sayHello">
+  <soap:operation soapAction=""/>
+   <input>
+    <soap:body use="literal"/>
+   </input>
+   <output>
+    <soap:body use="literal"/>
+   </output>
+  </operation>
+ </binding>
+
+ <service name="GreetingService">
+  <port binding="tns:GreetingServiceEndpointBinding" name="GreetingServiceEndpointPort">
+   <soap:address location="http://127.0.0.1:8080/jaxwsspring/GreetingService"/>
+  </port>
+ </service>
+</definitions>
